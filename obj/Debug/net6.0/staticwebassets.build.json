@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "FQznjEi2vshARSKbMNeIgYcNt+wH44t85SJJL8+J7BM=",
+  "Source": "LedgerBalanceService",
+  "BasePath": "_content/LedgerBalanceService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
