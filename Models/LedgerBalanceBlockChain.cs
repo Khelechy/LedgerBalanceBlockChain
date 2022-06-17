@@ -5,6 +5,8 @@ namespace LedgerBalanceService.Models
     public class LedgerBalanceBlockChain : ILedgerService
     {
         private readonly int _proofOfWorkDifficulty = 2;
+        private readonly double _miningReward = 10;
+        private readonly long _minerAddress = 999;
         private List<LedgerBalance> _pendingLedgerBalances;
         public List<LedgerBalanceBlock> Chain { get; set; }
 
@@ -17,11 +19,14 @@ namespace LedgerBalanceService.Models
         public void AddLedgerBalance(LedgerBalance ledgerBalance)
         {
             _pendingLedgerBalances.Add(ledgerBalance);
+            //Simulate Mine after adding ledger
             MineLedgerBalanceBlock();
         }
 
         public void MineLedgerBalanceBlock()
         {
+            LedgerBalance minerRewardTransaction = new LedgerBalance(_minerAddress, _miningReward);
+            _pendingLedgerBalances.Add(minerRewardTransaction);
             LedgerBalanceBlock block = new LedgerBalanceBlock(DateTime.Now, _pendingLedgerBalances);
             block.MineLedgerBlock(_proofOfWorkDifficulty);
             block.PreviousHash = Chain.Last().Hash;
